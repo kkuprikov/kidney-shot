@@ -1,0 +1,15 @@
+<%= form_for @task, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+<h1>New task!</h1>
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <p>Title: </p> <%= f.text_field :title %>
+  <br>
+  <p>Add some details: </p><%= f.text_area :text, size: "50x12" %>
+  <br>
+  <%= f.submit "Create task" %>
+<% end %>
