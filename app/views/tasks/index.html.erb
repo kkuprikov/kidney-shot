@@ -1,0 +1,11 @@
+<% tasks = Task.all %>
+<% tasks.each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.text %></td>
+  </tr>
+<% end %>
+
+<% if tasks.size == 0 %>
+  <em>No tasks found</em>
+<% end %>
