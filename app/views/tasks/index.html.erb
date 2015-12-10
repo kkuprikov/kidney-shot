@@ -4,12 +4,14 @@
     <tr>
       <th data-field="title" data-sortable="true">Task title</th>
       <th data-field="text" data-sortable="true">Details</th>
+      <th data-field="text" data-sortable="true">Completed?</th>
     </tr>
   </thead>
   <% tasks.each do |task| %>
     <tr>
-      <td><%= task.title %></td>
+      <td><%= link_to task.title, task %></td>
       <td><%= task.text %></td>
+      <td><%= task.completed? ? "Yes" : "No" %></td>
     </tr>
   <% end %>
 </table>

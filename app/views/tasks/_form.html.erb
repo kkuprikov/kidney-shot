@@ -2,6 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  <p>Title: </p> <%= f.text_field :title %>
+  <br>
+  <p>Add some details: </p><%= f.text_area :text, size: "50x12" %>
+  <br>
   </div>
 
   <div class="form-actions">
