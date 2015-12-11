@@ -1,5 +1,11 @@
 <h1><%= @task.title %></h1>
 <p><%= @task.text %></p>
+<h2>Users, assigned to task:</h2>
+<p>
+  <% @task.users.each do |user|%>
+    <%= user.email %>
+  <% end %> 
+</p>
 
 <%= link_to "Edit task", edit_task_path %>
 <br>

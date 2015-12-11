@@ -24,10 +24,10 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = current_user.tasks.new(task_params)
+    @task = Task.new(task_params)
 
     respond_to do |format|
-      if @task.save
+      if !@task.user_ids.empty? && @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :text, :completed)
+      params.require(:task).permit(:title, :text, :completed, user_ids: [])
     end
 
 
