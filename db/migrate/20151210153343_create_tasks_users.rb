@@ -5,7 +5,7 @@ class CreateTasksUsers < ActiveRecord::Migration
       t.integer :user_id
     end
 
-    add_index :tasks_users, [:task_id, :user_id]
+    add_index :users_tasks, [:user_id, :task_id], unique: true
   end
 
   def self.down
