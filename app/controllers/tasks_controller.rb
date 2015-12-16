@@ -4,7 +4,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks.all
+    if current_user 
+      @tasks = current_user.tasks.all
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   # GET /tasks/1
@@ -28,9 +32,12 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if !@task.user_ids.empty? && @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to tasks_index_path, notice: 'Task was successfully created.' }
+        message = "Task #{@task.title} has to be completed until #{@task.completion}"
+        PrivatePub.publish_to("/notifications", message: message)        
         format.json { render :show, status: :created, location: @task }
       else
+        @task.valid?
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
@@ -73,7 +80,7 @@ class TasksController < ApplicationController
         :title, 
         :text, 
         :completed, 
-        :completion_time,
+        :completion,
         user_ids: [])
     end
 

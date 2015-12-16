@@ -1,8 +1,10 @@
+<%= subscribe_to "/notifications" %>
 <table class=" table table-striped">
   <thead>
     <tr>
       <th data-field="title" data-sortable="true">Task title</th>
       <th data-field="text" data-sortable="true">Details</th>
+      <th data-field="text" data-sortable="true">Time to complete</th>
       <th data-field="text" data-sortable="true">Status</th>
     </tr>
   </thead>
@@ -10,6 +12,7 @@
     <tr>
       <td><%= link_to task.title, task %></td>
       <td><%= task.text %></td>
+      <td><%= task.completion %></td>
       <td><%= task.completed? ? "Done!" : "In progress" %></td>
     </tr>
   <% end %>
