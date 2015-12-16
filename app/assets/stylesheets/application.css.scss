@@ -46,6 +46,27 @@ textarea {
 .authform fieldset {
   @extend .well;
 }
+
+.new-task {
+  padding-top: 30px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.new-task form {
+  @extend .well;
+  @extend .well-lg;
+  padding-bottom: 40px;
+}
+.new-task .right {
+  float: right !important;
+}
+.new-task .button {
+  @extend .btn;
+  @extend .btn-primary;
+}
+.new-task fieldset {
+  @extend .well;
+}
 #error_explanation:not(:empty) {
   @extend .alert;
   @extend .alert-danger;

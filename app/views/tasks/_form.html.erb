@@ -15,11 +15,10 @@
 
   <p>Title: </p> <%= f.text_field :title %>
   <br>
-  <p>Add some details: </p><%= f.text_area :text, size: "50x12" %>
+  <p>Add some details: </p><%= f.text_area :text, size: "40x12" %>
   <br>
   <p>Select receivers: </p><%= f.select :user_ids, User.all.collect {|x| [x.email, x.id]}, {}, :multiple => true %>
-  <br>
-  <p>Time to complete: </p><%= f.input :completion, :as => :datetime_picker %>
+  <%= f.input :completion, :as => :datetime_picker %>
   </div>
 
 
